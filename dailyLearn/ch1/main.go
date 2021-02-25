@@ -26,9 +26,6 @@ func main() {
 		fmt.Println("hello world", os.Args[1])
 	}
 
-
-
-
 	os.Exit(-1)
 }
 
