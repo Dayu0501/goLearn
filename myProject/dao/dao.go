@@ -1,10 +1,9 @@
-package test
+package dao
 
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
-	"testing"
 )
 
 type Person1 struct {
@@ -37,7 +36,7 @@ func OpenDB() {
 	//defer Db.Close()  // 注意这行代码要写在上面err判断的下面
 }
 
-func TestDbInsert(t *testing.T) {
+func DbInsert() {
 	r, err := Db.Exec("insert into person(username, sex, email)values(?, ?, ?)", "stu001", "man", "stu01@qq.com")
 	if err != nil {
 		fmt.Println("exec failed, ", err)
@@ -52,7 +51,7 @@ func TestDbInsert(t *testing.T) {
 	fmt.Println("insert succ:", id)
 }
 
-func TestDbSelect(t *testing.T) {
+func DbSelect() {
 	OpenDB()
 
 	var person []user

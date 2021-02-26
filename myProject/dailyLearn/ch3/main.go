@@ -118,7 +118,7 @@ func main() {
 //
 //	/* 以并发的方式异步调用匿名函数 */
 //	go func() {
-//		log.Printf("test annoyname func")
+//		log.Printf("dao annoyname func")
 //	}()
 //
 //	panic("panic learn!")
