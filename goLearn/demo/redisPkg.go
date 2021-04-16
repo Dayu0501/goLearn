@@ -28,49 +28,49 @@ type AlgTaskInfoReqPkg struct {
 	EncodeKey      string                `json:"encodeKey"`
 	InSystemTime   string                `json:"inSystemTime"`
 	PicProcessTime string                `json:"picProcessTime"`
-	ReponseChan    string                `json:"reponseChan"`
+	ResponseChan    string                `json:"reponseChan"`
 	SessionID      string                `json:"sessionId"`
 	TimeoutSecond  string                `json:"timeoutSecond"`
 }
 
 /* response body struct */
-type PhotoSavePathRespAttr struct {
-	MainPhoto  string   `json:"mainPhoto"`
-	SubPhoto   string   `json:"subPhoto"`
-	OtherPhoto []string `json:"otherPhoto"`
-}
-
 type AlgReturnRespAttr struct {
-	Num7001 string `json:"7001"`
-	Status  string `json:"status"`
+	Num7002 string `json:"7002"`
+	Status string `json:"status"`
 }
 
-type OtherRespAttr struct {
-	InSystemTime       string  `json:"inSystemTime"`
-	ReponseChan        string  `json:"reponseChan"`
-	TimeoutSecond      string  `json:"timeoutSecond"`
-	AlgObjTime         float64 `json:"AlgObjTime"`
-	AlgProcTime        float64 `json:"AlgProcTime"`
-	AlgPicParseTime    float64 `json:"AlgPicParseTime"`
-	OutSystemTime      string  `json:"OutSystemTime"`
-	AlgIP              string  `json:"AlgIp"`
-	AlgVersion         string  `json:"AlgVersion"`
-	PicDownloadTimeOut string  `json:"PicDownloadTimeOut"`
-}
-
-type Num7001Attr []struct {
-	Name  string `json:"name"`
+type Num7002RespAttr struct {
+	Name string `json:"name"`
 	Value string `json:"value"`
 }
 
-type ReturnResultMemberListAttr struct {
-	Num7001 []*Num7001Attr `json:"7001"`
+type ReturnResultMemberListRespAttr struct {
+	Num7002 []Num7002RespAttr `json:"7002"`
+}
+
+type PhotoSavePathRespAttr struct {
+	MainPhoto string `json:"mainPhoto"`
+	SubPhoto string `json:"subPhoto"`
+	OtherPhoto []string `json:"otherPhoto"`
+}
+
+type OtherRespAttr struct {
+	InSystemTime string `json:"inSystemTime"`
+	ReponseChan string `json:"reponseChan"`
+	TimeoutSecond string `json:"timeoutSecond"`
+	AlgObjTime float64 `json:"AlgObjTime"`
+	AlgProcTime float64 `json:"AlgProcTime"`
+	AlgPicParseTime float64 `json:"AlgPicParseTime"`
+	OutSystemTime string `json:"OutSystemTime"`
+	AlgIP string `json:"AlgIp"`
+	AlgVersion string `json:"AlgVersion"`
+	PicDownloadTimeOut string `json:"PicDownloadTimeOut"`
 }
 
 type AlgTaskInfoRespPkg struct {
-	AlgTaskKeyCode         string                        `json:"algTaskKeyCode"`
-	AlgReturn              AlgReturnRespAttr             `json:"algReturn"`
-	ReturnResultMemberList []*ReturnResultMemberListAttr `json:"returnResultMemberList"`
-	PhotoItem              PhotoSavePathRespAttr         `json:"photoSavePath"`
-	Other                  OtherRespAttr                 `json:"other"`
+	AlgTaskKeyCode string `json:"algTaskKeyCode"`
+	AlgReturn AlgReturnRespAttr `json:"algReturn"`
+	ReturnResultMemberList []ReturnResultMemberListRespAttr `json:"returnResultMemberList"`
+	PhotoSavePath PhotoSavePathRespAttr `json:"photoSavePath"`
+	Other OtherRespAttr `json:"other"`
 }

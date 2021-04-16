@@ -13,8 +13,8 @@ func init() {
 	//连接服务器
 	redisdb = redis.NewClient(&redis.Options{
 		Addr:     "192.168.70.210:6379", // use default Addr
-		Password: "123",               // no password set
-		DB:       0,                // use default DB
+		Password: "123",                 // no password set
+		DB:       0,                     // use default DB
 	})
 
 	//心跳
@@ -22,9 +22,9 @@ func init() {
 	log.Println(pong, err)
 }
 
-func SendPkgToRedis(AlgTaskInfoPkgList []AlgTaskInfoReqPkg) error {
+func SendPkgToRedis(AlgTaskInfoPkgList AlgTaskInfoReqPkg) error {
 	strSendJson, _ := json.Marshal(AlgTaskInfoPkgList)
-	 return redisdb.RPush("alg_request_queue", strSendJson).Err()
+	return redisdb.RPush("alg_request_queue", strSendJson).Err()
 }
 
 func GetPkgFormRedis() ([]string, error) {

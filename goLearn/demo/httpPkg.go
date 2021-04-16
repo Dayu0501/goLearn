@@ -12,7 +12,7 @@ type listAttr struct {
 	UserID                    interface{}   `json:"userId"`
 	PicURL                    []string      `json:"picUrl"`
 	CreatedAtL                string        `json:"createdAtL"`
-	PicList                   []interface{} `json:"picList"`
+	PicList                   []string `json:"picList"`
 	Claim                     string        `json:"claim"`
 	ReviewStatus              string        `json:"reviewStatus"`
 	ID                        string        `json:"id"`

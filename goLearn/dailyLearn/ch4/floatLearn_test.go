@@ -43,7 +43,7 @@ func TestRune(t *testing.T) {
 	var b rune = 'B'
 	fmt.Printf("a 占用 %d 个字节数\nb 占用 %d 个字节数\n", unsafe.Sizeof(a), unsafe.Sizeof(b))
 
-	var c rune = '中' //表示的是unicode编码的字符，范围到，可以表示中文字符
+	var c rune = '中' //表示的是unicode编码的字符，范围大，可以表示中文字符
 
 
 	/* 因为uint8 和 uint32 ，直观上让人以为这是一个数值，但是实际上，它也可以表示一个字符 */

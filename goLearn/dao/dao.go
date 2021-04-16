@@ -26,8 +26,12 @@ type user struct {
 
 var Db *sqlx.DB
 
+func init() {
+	OpenDB()
+}
+
 func OpenDB() {
-	database, err := sqlx.Open("mysql", "root:em-data-9527@tcp(192.168.20.71:3306)/db_test")
+	database, err := sqlx.Open("mysql", "root:em-data-9527@tcp(192.168.70.210:6033)/chejian_refactor_v6")
 	if err != nil {
 		fmt.Println("open mysql failed,", err)
 		return
@@ -36,19 +40,20 @@ func OpenDB() {
 	//defer Db.Close()  // 注意这行代码要写在上面err判断的下面
 }
 
-func DbInsert() {
-	r, err := Db.Exec("insert into person(username, sex, email)values(?, ?, ?)", "stu001", "man", "stu01@qq.com")
+func DbInsert(sql string) error {
+	r, err := Db.Exec(sql)
 	if err != nil {
 		fmt.Println("exec failed, ", err)
-		return
+		return err
 	}
 	id, err := r.LastInsertId()
 	if err != nil {
 		fmt.Println("exec failed, ", err)
-		return
+		return err
 	}
 
 	fmt.Println("insert succ:", id)
+	return nil
 }
 
 func DbSelect() {
@@ -62,4 +67,17 @@ func DbSelect() {
 	}
 
 	fmt.Println("select succ:", person)
+}
+
+func QueryDb(sql string) ([]string, error) {
+
+	var setPic []string
+	err := Db.Select(&setPic, sql)
+	if err != nil {
+		fmt.Println("exec failed, ", err)
+		return nil, err
+	}
+
+	fmt.Println("select succ:", setPic)
+	return setPic, nil
 }

@@ -12,7 +12,7 @@ const (
 		"starttime=2021-01-01%2000:00:00&endtime=2021-02-31%2000:00:00&source=YJJ-DK"
 
 	reviewDataUrl = "http://xuhuipatrol.lmding.com/xuhuipatrol/anon/screen/rest/DataRest/getReviewData/v1_0?" +
-		"starttime=2021-01-01%2000:00:00&endtime=2021-01-31%2000:00:00&source=YJJ-DK"
+		"starttime=2021-01-01%2000:00:00&endtime=2021-02-31%2000:00:00&source=YJJ-DK"
 )
 
 func HttpGet() (string, error) {
@@ -27,7 +27,7 @@ func HttpGet() (string, error) {
 		return "", err
 	}
 
-	fmt.Println("+++++++++++" + string(body))
+	//fmt.Println("+++++++++++" + string(body))
 	return string(body), nil
 }
 
