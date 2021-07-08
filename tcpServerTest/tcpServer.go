@@ -18,7 +18,7 @@ func process(conn net.Conn) {
 		}
 		recvStr := string(buf[:n])
 		fmt.Println("收到client端发来的数据：", recvStr)
-		conn.Write([]byte(recvStr)) // 发送数据
+		_, _ = conn.Write([]byte(recvStr)) // 发送数据
 	}
 }
 

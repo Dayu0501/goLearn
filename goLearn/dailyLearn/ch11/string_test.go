@@ -3,6 +3,7 @@ package ch11
 import (
 	"errors"
 	"fmt"
+	"image"
 	"os"
 	"testing"
 	"time"
@@ -275,5 +276,29 @@ func TestForError(t *testing.T) {
 		println(v)
 	default:
 
+	}
+}
+
+func TestTimer(t *testing.T) {
+	timer5 := time.NewTimer(3 * time.Second)
+	timer5.Reset(1 * time.Second)
+	fmt.Println(time.Now())
+	fmt.Println(<-timer5.C)
+}
+
+var icons map[string]image.Image
+
+func loadIcons() {
+	icons = map[string]image.Image{
+		"left":  loadIcon("left.png"),
+		"up":    loadIcon("up.png"),
+		"right": loadIcon("right.png"),
+		"down":  loadIcon("down.png"),
+	}
+}
+
+func TestIconFor_test(t *testing.T) {
+	if icons == nil {
+		loadIcons()
 	}
 }

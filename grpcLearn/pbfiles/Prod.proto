@@ -1,0 +1,24 @@
+syntax = "proto3";
+package services;
+option go_package = "./";
+
+message ProdRequest {
+  int32 prod_id = 1;  //传入的商品id
+}
+
+message ProdResponse {
+  int32 prod_stock = 1; //商品库存
+}
+
+message ProdRequestName {
+  string name = 1;
+}
+
+message ProdResponseName {
+  string name = 1;
+}
+
+service ProdService {
+  rpc GetProdStock(ProdRequest) returns (ProdResponse);
+  rpc GetProdName(ProdRequestName) returns (ProdResponseName);
+}
